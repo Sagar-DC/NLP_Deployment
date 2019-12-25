@@ -14,7 +14,7 @@
 
 <body>
  <div class="login">
-	<h1>Ham Spam</h1>
+	<h1>Spam Classifier</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
@@ -26,11 +26,17 @@
 
    <br>
    <br>
-   {{ prediction_text }}
-   
-   {{ clean_text }}
+    
+    {{ cleaned_text }}
 
  </div>
+ 
+ 	<p style="color:blue;font-size:20;text-align: center;"></p>		
+	{% if prediction_text == 1%}
+	<h2 style="color:red;">Spam</h2>
+	{% elif prediction_text == 0%}
+	<h2 style="color:gery;">Not a Spam (It is a Ham)</h2>
+	{% endif %}
 
 
 </body>
