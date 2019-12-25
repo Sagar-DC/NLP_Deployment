@@ -33,8 +33,8 @@ def predict():
     
     return render_template('index.html', prediction_text='Message Entered is "{}" '.format(output))
 
-@app.route('/test', methods=['POST'])
-def test():
+@app.route('/clean', methods=['POST'])
+def clean():
     msg = request.form['message']
     text = text_clean(msg)
     return render_template('index.html', prediction_text='Cleaned Message "{}" '.format(text))
