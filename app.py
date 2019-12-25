@@ -31,13 +31,14 @@ def predict():
     else:
         output = "Spam"
     
-    return render_template('index.html', prediction_text='Message Entered is "{}" '.format(output))
+    return render_template('index.html', prediction_text = prediction)
+    #return render_template('index.html', prediction_text='Message Entered is "{}" '.format(output))
 
 @app.route('/clean', methods=['POST'])
 def clean():
     msg = request.form['message']
     text = text_clean(msg)
-    return render_template('index.html', prediction_text='Cleaned Message "{}" '.format(text))
+    return render_template('index.html', cleaned_text='Cleaned Message "{}" '.format(text))
     
 
 if __name__ == "__main__":
