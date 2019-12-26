@@ -17,7 +17,7 @@ cv = pickle.load(open('tranform.pkl','rb'))
 def home():
     return render_template('index.html')
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['POST'])  
 def predict():
     if request.method == 'POST':
         msg = request.form['message']
