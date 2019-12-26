@@ -17,7 +17,7 @@
 	<h1>Spam Classifier</h1>
 
      <!-- Main Input For Receiving Query to our ML -->
-    <form action="{{ url_for('predict')}}"method="post">
+    <form action="{{ url_for('predict')}}" method="post">
     	<h3> Enter your Message </h3>
     	<textarea name="message" rows="6" cols="50" required="required"></textarea>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
