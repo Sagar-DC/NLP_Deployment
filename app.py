@@ -19,17 +19,13 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    msg = request.form['message']
-    text = text_clean(msg)
+    if request.method == 'POST':
+        msg = request.form['message']
+        text = text_clean(msg)
     
-    text = [text]
-    vector = cv.transform(text).toarray()
-    prediction = model.predict(vector)
-    
-    if prediction == 0:
-        output = "Ham"
-    else:
-        output = "Spam"
+        text = [text]
+        vector = cv.transform(text).toarray()
+        prediction = model.predict(vector)
     
     return render_template('index.html', prediction_text = prediction)
     #return render_template('index.html', prediction_text='Message Entered is "{}" '.format(output))
