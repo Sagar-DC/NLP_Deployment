@@ -28,7 +28,7 @@ def predict():
         prediction = model.predict(vector)
     return render_template('index.html', prediction_text = prediction)
 
-@app.route('/clean')
+@app.route('/clean', methods = ['POST'])
 def clean():
     message = request.form['message']
     text = text_clean(message)
