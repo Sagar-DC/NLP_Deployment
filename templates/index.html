@@ -16,7 +16,8 @@
  <div class="spam-container">
 	<h1>Spam Classifier</h1>
 
-    <form action="{{ url_for('predict') }}" method="POST">
+    
+    <form action="{{ url_for('predict')}}" method="POST">
     	<h3> Enter your Message </h3>
     	<textarea name="message" rows="6" cols="50" required="required"></textarea>
         <button type="submit" class="btn btn-primary btn-block btn-large" value="predict">Predict</button>
