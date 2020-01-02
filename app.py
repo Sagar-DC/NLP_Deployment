@@ -1,7 +1,23 @@
 from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
-from Data_Preprocessor import text_clean
+
+def text_clean(msg):
+    import re
+    from nltk.corpus import stopwords
+    from nltk.stem.porter import PorterStemmer
+
+    stemmer = PorterStemmer()
+    
+    for i in range(0, len([msg])):
+        text = re.sub('[^a-zA-Z]', ' ', msg)
+        text = text.lower()
+        text = text.split()
+    
+        text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
+        text = ' '.join(text)
+    
+    return text
 
 # load the model from disk
 filename = 'model.pkl'
@@ -27,7 +43,7 @@ def predict():
 def clean():
 	if request.method == 'POST':
 		message = request.form['message']
-		text = cl(message)
+		text = text_clean(message)
 	return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
 
 if __name__ == '__main__':
