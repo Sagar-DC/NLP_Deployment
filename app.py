@@ -23,7 +23,7 @@ def text_clean(msg):
 filename = 'model.pkl'
 clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('tranform.pkl','rb'))  
-cl=pickle.load(open('clean.pkl','rb')) 
+#cl=pickle.load(open('clean.pkl','rb')) 
 app = Flask(__name__)
 
 @app.route('/')
