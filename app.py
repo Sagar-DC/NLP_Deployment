@@ -39,6 +39,7 @@ def predict():
 		my_prediction = clf.predict(vect)
 	return render_template('index.html',prediction_text = my_prediction)
 
+
 @app.route('/clean',methods=['POST'])
 def clean():
 	if request.method == 'POST':
