@@ -2,11 +2,10 @@ from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
 import re
+from nltk.corpus import stopwords
+from nltk.stem.porter import PorterStemmer
 
 def text_clean(msg):
-    import re
-    from nltk.corpus import stopwords
-    from nltk.stem.porter import PorterStemmer
 
     stemmer = PorterStemmer()
     
@@ -48,9 +47,9 @@ def clean():
         for i in range(len(message)):
             text = re.sub('[^a-zA-Z]', ' ', message)
             
-        #message = text_clean(message)
+        message = text_clean(message)
         message = message
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "actual message : {}".format(message))
 
 
 if __name__ == '__main__':
