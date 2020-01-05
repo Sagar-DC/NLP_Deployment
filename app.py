@@ -40,7 +40,7 @@ def clean():
         text = text.split()
         for word in text:
             #if not word in stopwords.words('english'):
-                tt.append(stemmer.stem(word))
+                tt.append((word))
 
 
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
