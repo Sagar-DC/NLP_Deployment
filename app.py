@@ -34,18 +34,19 @@ def clean():
     if request.method == 'POST':
         message = request.form['message']
         
-        text = re.sub('[^a-zA-Z]', ' ', message)
-        text = text.lower()
-        text = text.split()
-        #for word in text:
-            #if not word in stopwords.words('english'):
-                #tt.append(word)
-
-        no_stop_words = [w for w in text if w.lower() not in stops]
+# =============================================================================
+#         text = re.sub('[^a-zA-Z]', ' ', message)
+#         text = text.lower()
+#         text = text.split()
+#         #for word in text:
+#             #if not word in stopwords.words('english'):
+#                 #tt.append(word)
+# =============================================================================
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-        text = ' '.join(text)
+        #text = ' '.join(text)
+        text = message
             
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(no_stop_words), actual_text = "Actual message : {}".format(message))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
 
 if __name__ == '__main__':
