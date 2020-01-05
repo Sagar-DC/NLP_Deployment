@@ -31,7 +31,6 @@ def predict():
 @app.route('/clean',methods=['POST'])
 def clean():
     tt = []
-    stemmer = PorterStemmer()
     if request.method == 'POST':
         message = request.form['message']
 
@@ -40,7 +39,7 @@ def clean():
         text = text.split()
         for word in text:
             #if not word in stopwords.words('english'):
-                tt.append((word))
+                tt.append(word)
 
 
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
@@ -50,4 +49,4 @@ def clean():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, use_reloader=True)
