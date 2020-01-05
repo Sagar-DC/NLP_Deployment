@@ -37,8 +37,8 @@ def clean():
         text = text.lower()
         text = text.split()
         for word in text:
-            if not word in stopwords.words('english'):
-                text = word
+            #if not word in stopwords.words('english'):
+                text = stemmer.stem(word) 
 
 
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
