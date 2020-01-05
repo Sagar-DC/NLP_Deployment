@@ -31,6 +31,7 @@ def predict():
 @app.route('/clean',methods=['POST'])
 def clean():
     tt = []
+    stemmer = PorterStemmer()
     if request.method == 'POST':
         message = request.form['message']
 
