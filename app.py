@@ -34,11 +34,11 @@ def home():
 def predict():
     if request.method == 'POST':
         message = request.form['message']
-        message = text_clean(message)
+        #message = text_clean(message)
         data = [message]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
-    return render_template('index.html',prediction_text = my_prediction)
+    return render_template('index.html',prediction_text = my_prediction, cleaned_text = vect.shape)
 
 @app.route('/clean',methods=['POST'])
 def clean():
