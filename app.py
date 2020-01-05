@@ -24,6 +24,8 @@ def text_clean(msg):
 filename = 'model.pkl'
 clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('tranform.pkl','rb')) 
+
+stemmer = PorterStemmer()
 app = Flask(__name__)
 
 @app.route('/')
@@ -47,12 +49,11 @@ def clean():
         for i in range(len(message)):
             text = re.sub('[^a-zA-Z]', ' ', message)
             text = text.lower()
+            text = text.split()
+            text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
             
-        message = text_clean(message)
-        message = message
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "actual message : {}".format(message))
 
 
 if __name__ == '__main__':
-    from Data_Preprocessor import text_clean
     app.run(debug=True)
