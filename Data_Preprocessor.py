@@ -4,6 +4,7 @@ Created on Wed Dec 25 20:40:15 2019
 
 @author: sagar
 """
+import pickle
 
 def text_clean(msg):
     import re
@@ -22,6 +23,7 @@ def text_clean(msg):
     
     return text
 
-        
+
+pickle.dump(text_clean, open('clean.pkl', 'wb'))
 
 
