@@ -46,6 +46,7 @@ def clean():
         message = request.form['message']
         for i in range(len(message)):
             text = re.sub('[^a-zA-Z]', ' ', message)
+            text = text.lower()
             
         message = text_clean(message)
         message = message
@@ -53,4 +54,5 @@ def clean():
 
 
 if __name__ == '__main__':
-	app.run(debug=True)
+    from Data_Preprocessor import text_clean
+    app.run(debug=True)
