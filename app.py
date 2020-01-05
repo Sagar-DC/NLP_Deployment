@@ -5,13 +5,14 @@ import re
 from nltk.corpus import stopwords
 from nltk.stem.porter import PorterStemmer
 
+
 # load the model from disk
 filename = 'model.pkl'
 clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('tranform.pkl','rb')) 
 
 stemmer = PorterStemmer()
-stop = stopwords.words('english')
+stops = stopwords.words('english')
 app = Flask(__name__)
 
 @app.route('/')
@@ -33,18 +34,18 @@ def clean():
     if request.method == 'POST':
         message = request.form['message']
         
-    text = re.sub('[^a-zA-Z]', ' ', message)
-    text = text.lower()
-    text = text.split()
+        text = re.sub('[^a-zA-Z]', ' ', message)
+        text = text.lower()
+        text = text.split()
         #for word in text:
             #if not word in stopwords.words('english'):
                 #tt.append(word)
 
-
+        no_stop_words = [w for w in text if w.lower() not in stops]
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-    text = ' '.join(text)
+        text = ' '.join(text)
             
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(no_stop_words), actual_text = "Actual message : {}".format(message))
 
 
 if __name__ == '__main__':
