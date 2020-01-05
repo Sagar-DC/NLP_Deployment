@@ -46,12 +46,19 @@ def predict():
 def clean():
     if request.method == 'POST':
         message = request.form['message']
-        for i in range(len(message)):
-            text = re.sub('[^a-zA-Z]', ' ', message)
-            text = text.lower()
-            text = text.split()
-            text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-            text = ' '.join(text)
+# =============================================================================
+#         for i in range(len(message)):
+#             text = re.sub('[^a-zA-Z]', ' ', message)
+#             text = text.lower()
+#             text = text.split()
+#             text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
+#             text = ' '.join(text)
+# =============================================================================
+        text = re.sub('[^a-zA-Z]', ' ', message)
+        text = text.lower()
+        text = text.split()
+        text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
+        text = ' '.join(text)
             
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
