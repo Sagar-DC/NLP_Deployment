@@ -52,7 +52,7 @@ def clean():
             text = text.split()
             text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
             
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "actual message : {}".format(message))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
 
 if __name__ == '__main__':
