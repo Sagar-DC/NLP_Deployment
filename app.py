@@ -11,7 +11,7 @@ clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('tranform.pkl','rb')) 
 
 stemmer = PorterStemmer()
-#stopwords = stopwords.words('english')
+stop = stopwords.words('english')
 app = Flask(__name__)
 
 @app.route('/')
@@ -32,20 +32,17 @@ def predict():
 def clean():
     if request.method == 'POST':
         message = request.form['message']
-# =============================================================================
-#         for i in range(len(message)):
-#             text = re.sub('[^a-zA-Z]', ' ', message)
-#             text = text.lower()
-#             text = text.split()
-#             text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-#             text = ' '.join(text)
-# =============================================================================
+
         text = re.sub('[^a-zA-Z]', ' ', message)
         text = text.lower()
         text = text.split()
-        text = [word for word in text if not word in stopwords.words('english')]
+        for word in text:
+            if not word in stopwords.words('english'):
+                text = word
+
+
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-        text = ' '.join(text)
+        #text = ' '.join(text)
             
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
