@@ -1,6 +1,7 @@
 from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
+import re
 
 def text_clean(msg):
     import re
@@ -44,9 +45,12 @@ def predict():
 def clean():
     if request.method == 'POST':
         message = request.form['message']
-        message = text_clean(message)
+        for i in range(len(message)):
+            text = re.sub('[^a-zA-Z]', ' ', message)
+            
+        #message = text_clean(message)
         message = message
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(message))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text))
 
 
 if __name__ == '__main__':
