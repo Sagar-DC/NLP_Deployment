@@ -17,7 +17,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-	return render_template('index.html')
+	return render_template('home.html')
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -29,7 +29,7 @@ def predict():
         my_prediction = clf.predict(vect)
     return render_template('index.html',prediction_text = my_prediction, cleaned_text = vect.shape)
 
-@app.route('/clean',methods=['POST'])
+@app.route('/clean',methods=['POST','GET'])
 def clean():
     if request.method == 'POST':
         message = request.form['message']
@@ -44,7 +44,7 @@ def clean():
 # =============================================================================
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
         #text = ' '.join(text)
-        text = message
+        text = "hiiiiii"
             
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
