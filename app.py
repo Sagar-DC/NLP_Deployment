@@ -19,7 +19,7 @@ def home():
 def predict():
     if request.method == 'POST':
         message = request.form['message']
-        #message = cl(message)
+        message = text_clean(message)
         data = [message]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
