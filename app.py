@@ -42,7 +42,7 @@ def clean():
 
 
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-        #text = ' '.join(text)
+        text = ' '.join(text)
             
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
