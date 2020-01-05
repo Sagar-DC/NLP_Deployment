@@ -37,9 +37,9 @@ def clean():
         text = re.sub('[^a-zA-Z]', ' ', message)
         text = text.lower()
         text = text.split()
-        for word in text:
+        #for word in text:
             #if not word in stopwords.words('english'):
-                tt.append(word)
+                #tt.append(word)
 
 
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
