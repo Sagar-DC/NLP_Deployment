@@ -23,7 +23,7 @@ def predict():
         data = [message]
         vect = cv.transform(data).toarray()
         my_prediction = clf.predict(vect)
-    return render_template('index.html',prediction = my_prediction)
+    return render_template('index.html',prediction_text = my_prediction)
 
 @app.route('/clean',methods=['POST'])
 def clean():
