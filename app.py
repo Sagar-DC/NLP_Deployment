@@ -30,7 +30,6 @@ def predict():
 
 @app.route('/clean',methods=['POST'])
 def clean():
-    tt = []
     if request.method == 'POST':
         message = request.form['message']
 
@@ -45,7 +44,7 @@ def clean():
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
         #text = ' '.join(text)
             
-    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(tt), actual_text = "Actual message : {}".format(message))
+    return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
 
 
 if __name__ == '__main__':
