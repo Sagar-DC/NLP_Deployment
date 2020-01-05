@@ -29,7 +29,7 @@ def predict():
 def clean():
     if request.method == 'POST':
         message = request.form['message']
-        #message = cl(message)
+        message = text_clean(message)
         message = message
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(message))
 
