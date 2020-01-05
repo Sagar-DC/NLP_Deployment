@@ -11,7 +11,7 @@ clf = pickle.load(open(filename, 'rb'))
 cv=pickle.load(open('tranform.pkl','rb')) 
 
 stemmer = PorterStemmer()
-stopwords = stopwords.words('english')
+#stopwords = stopwords.words('english')
 app = Flask(__name__)
 
 @app.route('/')
@@ -43,7 +43,8 @@ def clean():
         text = re.sub('[^a-zA-Z]', ' ', message)
         text = text.lower()
         text = text.split()
-        text = [stemmer.stem(word) for word in text if not word in stopwords]
+        text = [word for word in text if not word in stopwords.words('english')]
+        #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
             
     return render_template('index.html',cleaned_text = "Stemmed message : {}".format(text), actual_text = "Actual message : {}".format(message))
