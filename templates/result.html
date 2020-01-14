@@ -14,9 +14,8 @@
 <body>
 	<header>
 		<div class="container">
-		<div id="brandname">
-
-		</div>
+		<br>
+		<br>
 		<br>
 		<h1>Spam Classifier</h1>
 		
@@ -29,16 +28,19 @@
      <br>
      <br>
         {{ cleaned_text }}
-    
+        <br>
     	{% if prediction_text == 1%}
     	<h2 style="color:red;">Spam</h2>
     	{% elif prediction_text == 0%}
     	<h2 style="color:blue;">Not a Spam (It is a Ham)</h2>
     	{% endif %}
 
+
+    </div>
+         <br>
+     <br>
         <form>
           <input type="button" value="Want to search again, go back!" onclick="history.go(-1)">
-    </div>
-
+        </form>
 </body>
 </html>
