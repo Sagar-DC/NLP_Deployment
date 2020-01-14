@@ -14,7 +14,7 @@ def text_clean(msg):
         text = text.lower()
         text = text.split()
     
-        text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
+        #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
     
     return text
