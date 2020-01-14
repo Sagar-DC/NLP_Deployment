@@ -33,10 +33,13 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
 	if request.method == 'POST':
-		message = text_clean(request.form['message'])
-		data = [message]
-		vect = cv.transform(data).toarray()
-		my_prediction = clf.predict(vect)
+		message = request.form['message']
+    else:
+        message = request.args.get('message')
+	message = text_clean(message)
+    data = [message]
+	vect = cv.transform(data).toarray()
+	my_prediction = clf.predict(vect)
 	return render_template('index.html',prediction_text = my_prediction)
 
 
@@ -44,7 +47,9 @@ def predict():
 def clean():
 	if request.method == 'POST':
 		message = request.form['message']
-		text = text_clean(message)
+    else:
+        message = request.args.get('message')
+	text = text_clean(message)
 	return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
 
 if __name__ == '__main__':
