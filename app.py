@@ -39,7 +39,7 @@ def predict():
     
     message = text_clean(message)
     data = [message]
-    vect = cv.trnsform(data).toarray()
+    vect = cv.transform(data).toarray()
     my_prediction = clf.predict(vect)
     return render_template('index.html', prediction_text = my_prediction)
 
