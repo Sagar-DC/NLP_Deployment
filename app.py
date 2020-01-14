@@ -51,7 +51,7 @@ def clean():
     else:
         message = request.args.get('message')
         text = text_clean(message)
-        return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
+    return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
 
 if __name__ == '__main__':
 	app.run(debug=True)
