@@ -31,6 +31,7 @@ def lemmatize_text(msg):
         
         text = [word for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
+        text = lemmatizer.lemmatize(text)
         
     return text
     
