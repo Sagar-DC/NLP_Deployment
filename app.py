@@ -30,27 +30,28 @@ app = Flask(__name__)
 def home():
 	return render_template('index.html')
 
-@app.route('/predict',methods=['POST'])
+@app.route('/predict',methods=['POST','GET'])
 def predict():
-	if request.method == 'POST':
-		message = request.form['message']
+    if request.method == 'POST':
+        message = request.form['message']
     else:
         message = request.args.get('message')
-	message = text_clean(message)
+    
+    message = text_clean(message)
     data = [message]
-	vect = cv.transform(data).toarray()
-	my_prediction = clf.predict(vect)
-	return render_template('index.html',prediction_text = my_prediction)
+    vect = cv.trnsform(data).toarray()
+    my_prediction = clf.predict(vect)
+    return render_template('index.html', prediction_text = my_prediction)
 
 
-@app.route('/clean',methods=['POST'])
+@app.route('/clean',methods=['POST', 'GET'])
 def clean():
-	if request.method == 'POST':
-		message = request.form['message']
+    if request.method == 'POST':
+        message = request.form['message']
     else:
         message = request.args.get('message')
-	text = text_clean(message)
-	return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
+        text = text_clean(message)
+        return render_template('index.html',cleaned_text = "Cleaned Message: {}".format(text), actual_text = "Message Entered: {}".format(message)) 
 
 if __name__ == '__main__':
 	app.run(debug=True)
