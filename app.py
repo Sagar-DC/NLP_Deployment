@@ -3,7 +3,6 @@ import pandas as pd
 import pickle
 
 def text_clean(msg):
-    message = []
     import re
     from nltk.corpus import stopwords
     import nltk
@@ -16,13 +15,9 @@ def text_clean(msg):
         text = re.sub('[^a-zA-Z]', ' ', msg)
         text = text.lower()
         text = text.split()
-        for word in text:
-            if word not in set(stopwords.words('english')):
-                message.append(stemmer.stem(word))
-    
-        #text = [word for word in text if not word in stopwords.words('english')]
-        #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-        text = ' '.join(message)
+        
+        text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
+        text = ' '.join(text)
     return text
 
 
