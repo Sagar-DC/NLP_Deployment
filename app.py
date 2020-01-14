@@ -29,7 +29,7 @@ def lemmatize_text(msg):
         text = text.lower()
         text = text.split()
         
-        text = [lemmatizer.lemmatize(word) for word in text if not word in stopwords.words('english')]
+        #text = [lemmatizer.lemmatize(word) for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
         
     return text
