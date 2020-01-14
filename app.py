@@ -3,6 +3,7 @@ import pandas as pd
 import pickle
 
 def text_clean(msg):
+    message = []
     import re
     from nltk.corpus import stopwords
     from nltk.stem.porter import PorterStemmer
@@ -13,12 +14,15 @@ def text_clean(msg):
         text = re.sub('[^a-zA-Z]', ' ', msg)
         text = text.lower()
         text = text.split()
+        for word in text:
+            if word not in stopwords.words('english'):
+                message.append(stemmer.stem(word))
         
-        text = [word for word in text if not word in stopwords.words('english')]
+        #text = [word for word in text if not word in stopwords.words('english')]
         #text = [stemmer.stem(word) for word in text if not word in stopwords.words('english')]
-        text = ' '.join(text)
-    
+        text = ' '.join(message)
     return text
+
 
 # load the model from disk
 filename = 'model.pkl'
