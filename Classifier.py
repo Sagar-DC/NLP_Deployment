@@ -6,9 +6,9 @@ Created on Wed Dec 25 20:38:24 2019
 """
 
 import pandas as pd
-import numpy as np
 
 data = pd.read_csv("G:\\Deployment(Practice)\\NLP_Deployment\\Data\\ham_spam.csv",encoding = "ISO-8859-1")
+data = pd.read_csv("G:\\Deployment(Practice)\\NLP_Deployment\\Data\\spam.csv",encoding = "ISO-8859-1")
 
 import re
 from nltk.corpus import stopwords
