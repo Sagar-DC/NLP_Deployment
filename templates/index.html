@@ -26,25 +26,7 @@
         <button type="submit" class="btn btn-primary btn-large" formaction="{{ url_for('lemmatizer') }}">See Lemmatized Text</button>
     </form>
 
-   <br>
-   <br>
-    
-    <p style="color:grey;font-size:20;text-align: center;"> {{ actual_text }} </p>
-     <br>
-     <br>
-    {{ cleaned_text }}
-   
-
  </div>
- 
- 	<p style="color:blue;font-size:20;text-align: center;"></p>		
-	{% if prediction_text == 1%}
-	<h2 style="color:red;">Spam</h2>
-	{% elif prediction_text == 0%}
-	<h2 style="color:gery;">Not a Spam (It is a Ham)</h2>
-	{% endif %}
-
-
 </body>
 </html>
 
