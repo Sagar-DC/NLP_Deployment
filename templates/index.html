@@ -19,16 +19,18 @@
     
     <form action="{{ url_for('predict')}}" method="POST">
     	<h3> Enter your Message </h3>
-    	<textarea name="message" rows="6" cols="50" required="required"></textarea>
-        <button type="submit" class="btn btn-primary btn-block btn-large" value="predict">Predict</button>
-        <button type="submit" class="btn btn-primary btn-block btn-large" formaction="{{ url_for('clean') }}">See</button>
+    	<textarea name="message" rows="6" cols="50" required="required"></textarea> <br>
+        <button type="submit" class="btn btn-primary btn-large" value="predict">Check</button> <br>
+        <hr>
+        <button type="submit" class="btn btn-primary btn-large" formaction="{{ url_for('stemmer') }}">See Stemmed Text</button>
+        <button type="submit" class="btn btn-primary btn-large" formaction="{{ url_for('lemmatizer') }}">See Lemmatized Text</button>
     </form>
 
    <br>
    <br>
     
-    <p style="color:blue;font-size:20;text-align: center;"></p>
-    {{ actual_text }}
+    <p style="color:grey;font-size:20;text-align: center;"> {{ actual_text }} </p>
+     <br>
      <br>
     {{ cleaned_text }}
    
