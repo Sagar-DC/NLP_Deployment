@@ -22,7 +22,7 @@ def stemm_text(msg):
 
 def lemmatize_text(msg):
     from nltk.stem import WordNetLemmatizer
-    lemmatizer = WordNetLemmatizer()
+    wordnet_lemmatizer = WordNetLemmatizer()
     
     for i in range(0, len([msg])):
         text = re.sub('[^a-zA-Z]', ' ', msg)
@@ -31,7 +31,7 @@ def lemmatize_text(msg):
         
         text = [word for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
-        text = lemmatizer.lemmatize(text)
+        text = wordnet_lemmatizer.lemmatize(text)
         
     return text
     
