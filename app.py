@@ -30,9 +30,8 @@ def lemmatize_text(msg):
         text = text.lower()
         text = text.split()
         
-        text = [word for word in text if not word in stopwords.words('english')]
+        text = [wordnet_lemmatizer.lemmatize(word) for word in text if not word in stopwords.words('english')]
         text = ' '.join(text)
-        text = wordnet_lemmatizer.lemmatize(text)
         
     return text
     
